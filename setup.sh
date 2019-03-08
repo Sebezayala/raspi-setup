@@ -116,7 +116,7 @@ echo " BUILD AND INSTALL RTL-SDR"
 echo "-----------------------------------"
 
 # Check if the rtl-sdr git repository already exists.
-cd ~
+cd /home/pi
 if [ -d rtl-sdr ] && [ -d rtl-sdr/.git ]; then
     # If the mlat-client repository exists update the source code contained within it.
     cd rtl-sdr
@@ -136,8 +136,8 @@ make
 sudo make install
 sudo ldconfig
 sudo cp ../rtl-sdr.rules /etc/udev/rules.deal
-sudo chown ${USER:=$(/usr/bin/id -run)}:$USER ~/raspi-setup/blacklist-rtl.conf 
-sudo cp ~/raspi-setup/blacklist-rtl.conf /etc/modprobe.d
+sudo chown pi /home/pi/raspi-setup/blacklist-rtl.conf 
+sudo cp /home/pi/raspi-setup/blacklist-rtl.conf /etc/modprobe.d
 
 if [ $(dpkg-query -W -f='${STATUS}' librtlsdr-dev 2>/dev/null | grep -c "ok installed") -eq 0 ]; then
     sudo apt-get install -y librtlsdr-dev
@@ -149,7 +149,7 @@ echo " BUILD AND INSTALL DUMP1090"
 echo "-----------------------------------"
 
 # Check if the dump1090 git repository already exists.
-cd ~
+cd /home/pi
 if [ -d dump1090 ] && [ -d dump1090/.git ]; then
     # If the mlat-client repository exists update the source code contained within it.
     cd dump1090
@@ -165,10 +165,10 @@ sleep 0.25
 
 # Make install dump1090
 make BLADERF=no
-sudo chown ${USER:=$(/usr/bin/id -run)}:$USER ~/raspi-setup/default
-sudo chown ${USER:=$(/usr/bin/id -run)}:$USER ~/raspi-setup/dump1090-helper.service
-sudo cp ~/raspi-setup/default /etc/nginx/sites-available/
-sudo cp ~/raspi-setup/dump1090-helper.service /etc/systemd/system/
+sudo chown pi /home/pi/raspi-setup/default
+sudo chown pi /home/pi/raspi-setup/dump1090-helper.service
+sudo cp /home/pi/raspi-setup/default /etc/nginx/sites-available/
+sudo cp /home/pi/raspi-setup/dump1090-helper.service /etc/systemd/system/
 sudo systemctl enable dump1090-helper
 
 sleep 0.25
@@ -177,7 +177,7 @@ echo " BUILD AND INSTALL MLAT-CLIENT"
 echo "-----------------------------------"
 
 # Check if the mlat-client git repository already exists.
-cd ~
+cd /home/pi
 if [ -d mlat-client ] && [ -d mlat-client/.git ]; then
     # If the mlat-client repository exists update the source code contained within it.
     cd mlat-client 
