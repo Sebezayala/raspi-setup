@@ -1,0 +1,13 @@
+[Unit]
+Description=Dump1090 Start Service
+Wants=network-online.target dump1090-helper.service
+After=network-online.target dump1090-helper.service
+
+[Service]
+Type=fork
+ExecStart=/home/pi/dump1090/dump1090 --dcfilter --quiet --modeac --net --enable-agc --write-json /var/run/dump1090 --lat 00.0000 --lon 00.00000
+Restart=on-abort
+
+
+[Install]
+WantedBy=multi-user.target
