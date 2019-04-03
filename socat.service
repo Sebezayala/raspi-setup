@@ -1,0 +1,13 @@
+[Unit]
+Description=Socat Start Service
+Wants=network-online.target dump1090.service
+After=network-online.target dump1090.service
+
+[Service]
+Type=fork
+ExecStart=/bin/bash /usr/local/bin/socat.sh
+Restart=on-abort
+
+
+[Install]
+WantedBy=multi-user.target

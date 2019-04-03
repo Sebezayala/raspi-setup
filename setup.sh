@@ -118,7 +118,7 @@ echo "-----------------------------------"
 # Check if the rtl-sdr git repository already exists.
 cd /home/pi
 if [ -d rtl-sdr ] && [ -d rtl-sdr/.git ]; then
-    # If the mlat-client repository exists update the source code contained within it.
+    # If the rtl-sdr repository exists update the source code contained within it.
     cd rtl-sdr
     git pull 
     git checkout
@@ -151,7 +151,7 @@ echo "-----------------------------------"
 # Check if the dump1090 git repository already exists.
 cd /home/pi
 if [ -d dump1090 ] && [ -d dump1090/.git ]; then
-    # If the mlat-client repository exists update the source code contained within it.
+    # If the dump1090 repository exists update the source code contained within it.
     cd dump1090
     git pull 
     git checkout
