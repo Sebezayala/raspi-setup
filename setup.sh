@@ -108,7 +108,7 @@ fi
 
 sleep 0.25
 
-
+sudo chown -R pi /home/pi/raspi-setup/mvfiles
 
 sleep 0.25
 
@@ -135,9 +135,8 @@ cmake ../ -DINSTALL_UDEV_RULES=ON
 make
 sudo make install
 sudo ldconfig
-sudo cp ../rtl-sdr.rules /etc/udev/rules.deal
-sudo chown pi /home/pi/raspi-setup/blacklist-rtl.conf 
-sudo cp /home/pi/raspi-setup/blacklist-rtl.conf /etc/modprobe.d
+sudo mv ../rtl-sdr.rules /etc/udev/rules.deal
+sudo mv /home/pi/raspi-setup/mvfiles/blacklist-rtl.conf /etc/modprobe.d
 
 if [ $(dpkg-query -W -f='${STATUS}' librtlsdr-dev 2>/dev/null | grep -c "ok installed") -eq 0 ]; then
     sudo apt-get install -y librtlsdr-dev
@@ -165,10 +164,8 @@ sleep 0.25
 
 # Make install dump1090
 make BLADERF=no
-sudo chown pi /home/pi/raspi-setup/default
-sudo chown pi /home/pi/raspi-setup/dump1090-helper.service
-sudo cp /home/pi/raspi-setup/default /etc/nginx/sites-available/
-sudo cp /home/pi/raspi-setup/dump1090-helper.service /etc/systemd/system/
+sudo mv /home/pi/raspi-setup/mvfiles/default /etc/nginx/sites-available/
+sudo mv /home/pi/raspi-setup/mvfiles/dump1090-helper.service /etc/systemd/system/
 sudo systemctl enable dump1090-helper
 
 sleep 0.25
@@ -195,6 +192,16 @@ sleep 0.25
 dpkg-buildpackage -b -uc
 sudo dpkg -i ../mlat-client_*.deb
 sudo ./setup.py install
+sudo mv /home/pi/raspi-setup/mvfiles/dump1090.service /etc/systemd/system/
+sudo mv /home/pi/raspi-setup/mvfiles/mlat-client.service /etc/systemd/system/
+sudo mv /home/pi/raspi-setup/mvfiles/socat.service /etc/systemd/system/
+sudo mv /home/pi/raspi-setup/socat.sh /usr/local/bin/
+
+sleep 0.25
+
+echo "Setup Reciever"
+
+sudo /home/pi/raspi-setup/recieversetup.sh
 
 sleep 0.25
 
