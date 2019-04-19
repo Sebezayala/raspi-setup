@@ -5,7 +5,7 @@ After=network-online.target dump1090.service
 
 [Service]
 Type=fork
-ExecStart=/home/pi/mlat-client/mlat-client --input-type dump1090 --input-connect localhost:30005 --lat 00.000000 --lon 00.000000 --alt 0 --user username --server 18.216.189.229:51090 --no-udp --results beast,connect,localhost:30104
+ExecStart=/home/pi/mlat-client/mlat-client --input-type dump1090 --input-connect localhost:30005 --lat 00.000000 --lon 00.000000 --alt 0 --user username --server eplasp.io:51090 --no-udp --results beast,connect,localhost:30104
 
 Restart=on-abort
 
