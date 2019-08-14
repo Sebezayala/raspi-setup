@@ -1,34 +1,12 @@
 #!/bin/bash
 
-#####################################################################################
-#                        ADS-B EXCHANGE SETUP SCRIPT FORKED                         #
-#####################################################################################
-# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
-#                                                                                   #
-# Copyright (c) 2018 ADSBx                                    #
-#                                                                                   #
-# Permission is hereby granted, free of charge, to any person obtaining a copy      #
-# of this software and associated documentation files (the "Software"), to deal     #
-# in the Software without restriction, including without limitation the rights      #
-# to use, copy, modify, merge, publish, distribute, sublicense, and/or sell         #
-# copies of the Software, and to permit persons to whom the Software is             #
-# furnished to do so, subject to the following conditions:                          #
-#                                                                                   #
-# The above copyright notice and this permission notice shall be included in all    #
-# copies or substantial portions of the Software.                                   #
-#                                                                                   #
-# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR        #
-# IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,          #
-# FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE       #
-# AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER            #
-# LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,     #
-# OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE     #
-# SOFTWARE.                                                                         #
-#                                                                                   #
-# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+# Raspberry Pi Setup Script                       
+# Derived from ADS-B Exchange setup script @ https://github.com/adsbxchange/adsb-exchange                                     
+# Copyright (c) 2018 ADSBx : Original Implementation                               
+# Copyright (c) 2019 Sebastian Ayala Urtaza                                         
 
 
-## CHECK IF SCRIPT WAS RAN USING SUDO
+# CHECK IF SCRIPT WAS RAN USING SUDO
 
 if [ "$(id -u)" != "0" ]; then
     echo -e "\033[33m"
@@ -37,7 +15,7 @@ if [ "$(id -u)" != "0" ]; then
     exit 1
 fi
 
-## CHECK FOR PACKAGES NEEDED BY THIS SCRIPT
+# CHECK FOR PACKAGES NEEDED BY THIS SCRIPT
 
 echo -e "\033[33m"
 echo "Checking for packages needed to run this script..."
@@ -197,11 +175,6 @@ sudo mv /home/pi/raspi-setup/mvfiles/mlat-client.service /etc/systemd/system/
 sudo mv /home/pi/raspi-setup/mvfiles/socat.service /etc/systemd/system/
 sudo mv /home/pi/raspi-setup/socat.sh /usr/local/bin/
 
-sleep 0.25
-
-echo "Setup Reciever"
-
-sudo /home/pi/raspi-setup/recieversetup.sh
 
 sleep 0.25
 

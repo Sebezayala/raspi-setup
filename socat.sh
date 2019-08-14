@@ -1,4 +1,8 @@
 #!/bin/bash
+
+#Reciever server connection script
+#Copyright (c) 2019 Sebastian Ayala Urtaza
+
 x=5
 while true
 do

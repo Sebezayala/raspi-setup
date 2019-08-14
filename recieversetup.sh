@@ -1,4 +1,9 @@
 #!/bin/bash
+
+#Reciever setup script
+#Copyright (c) 2019 Sebastian Ayala Urtaza
+
+
 echo "Enter the reciever's latitude: "
 read LAT
 echo "Enter the reciever's longitude: "
